@@ -1,0 +1,14 @@
+c:\Users\User\Documents\TicTac\bin\Debug\net8.0\TicTac.exe
+C:\Users\User\Documents\TicTac\bin\Debug\net8.0\TicTac.deps.json
+C:\Users\User\Documents\TicTac\bin\Debug\net8.0\TicTac.runtimeconfig.json
+c:\Users\User\Documents\TicTac\bin\Debug\net8.0\TicTac.dll
+c:\Users\User\Documents\TicTac\bin\Debug\net8.0\TicTac.pdb
+c:\Users\User\Documents\TicTac\obj\Debug\net8.0\TicTac.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\User\Documents\TicTac\obj\Debug\net8.0\TicTac.AssemblyInfoInputs.cache
+c:\Users\User\Documents\TicTac\obj\Debug\net8.0\TicTac.AssemblyInfo.cs
+c:\Users\User\Documents\TicTac\obj\Debug\net8.0\TicTac.csproj.CoreCompileInputs.cache
+c:\Users\User\Documents\TicTac\obj\Debug\net8.0\TicTac.dll
+c:\Users\User\Documents\TicTac\obj\Debug\net8.0\refint\TicTac.dll
+c:\Users\User\Documents\TicTac\obj\Debug\net8.0\TicTac.pdb
+C:\Users\User\Documents\TicTac\obj\Debug\net8.0\TicTac.genruntimeconfig.cache
+C:\Users\User\Documents\TicTac\obj\Debug\net8.0\ref\TicTac.dll
