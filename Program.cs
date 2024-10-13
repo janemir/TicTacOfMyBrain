@@ -38,20 +38,21 @@ class Program
         }
     }
 
-    // Функция для проверки корректности хода
+    // Функция для проверки корректности хода (Inputcorrectness)
     static bool IsValidMove(int row, int col) 
     {
         return row >= 0 && row < 3 && col >= 0 && col < 3 && board[row, col] == ' ';
     }
 
-    // Основная логика игры (без логики победы, ничьей и перезапуска)
+    // Основная логика игры (Rules: чередование ходов)
     static void PlayGame() 
     {
-        bool gameOver = false;
+        bool gameOver = false;  // Пока победитель или ничья не обнаружены, игра продолжается
 
         while (!gameOver) 
         {
-            PrintBoard();
+            PrintBoard(); // Печать текущего состояния доски
+
             int row, col;
             bool validMove = false;
 
@@ -64,17 +65,20 @@ class Program
 
                 if (IsValidMove(row, col)) 
                 {
-                    board[row, col] = currentPlayer;
-                    validMove = true;
+                    board[row, col] = currentPlayer; // Устанавливаем символ текущего игрока в выбранную ячейку
+                    validMove = true;  // Завершаем цикл корректного ввода
                 } 
                 else 
                 {
-                    Console.WriteLine("Некорректный ход. Попробуйте снова.");
+                    Console.WriteLine("Некорректный ход. Попробуйте снова.");  // Выводим сообщение об ошибке
                 }
             }
 
-            // Логика смены игрока без проверки победителя и ничьей
-            currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
+            // Логика смены игрока (ветка Rules)
+            currentPlayer = currentPlayer == 'X' ? 'O' : 'X';  // Меняем игрока после успешного хода
         }
+
+        // Пока игра не завершена, основная логика будет продолжаться.
+        // Логика победы, ничьей и перезапуска еще не добавлена.
     }
 }
