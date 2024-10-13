@@ -44,14 +44,55 @@ class Program
         return row >= 0 && row < 3 && col >= 0 && col < 3 && board[row, col] == ' ';
     }
 
-    // Основная логика игры (Rules: чередование ходов)
+    // Функция для проверки победы (Win)
+    static bool CheckWin() 
+    {
+        // Проверка горизонтальных и вертикальных линий
+        for (int i = 0; i < 3; i++) 
+        {
+            if ((board[i, 0] == currentPlayer && board[i, 1] == currentPlayer && board[i, 2] == currentPlayer) ||
+                (board[0, i] == currentPlayer && board[1, i] == currentPlayer && board[2, i] == currentPlayer))
+            {
+                return true;
+            }
+        }
+
+        // Проверка диагоналей
+        if ((board[0, 0] == currentPlayer && board[1, 1] == currentPlayer && board[2, 2] == currentPlayer) ||
+            (board[0, 2] == currentPlayer && board[1, 1] == currentPlayer && board[2, 0] == currentPlayer))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    // Функция для проверки ничьей (Draw)
+    static bool CheckDraw() 
+    {
+        // Если на доске нет пустых клеток, и никто не выиграл, то ничья
+        for (int i = 0; i < 3; i++) 
+        {
+            for (int j = 0; j < 3; j++) 
+            {
+                if (board[i, j] == ' ') 
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    // Основная логика игры (Rules, Win, Draw)
     static void PlayGame() 
     {
-        bool gameOver = false;  // Пока победитель или ничья не обнаружены, игра продолжается
+        bool gameOver = false;
 
         while (!gameOver) 
         {
-            PrintBoard(); // Печать текущего состояния доски
+            PrintBoard(); // Печать доски
 
             int row, col;
             bool validMove = false;
@@ -65,20 +106,35 @@ class Program
 
                 if (IsValidMove(row, col)) 
                 {
-                    board[row, col] = currentPlayer; // Устанавливаем символ текущего игрока в выбранную ячейку
-                    validMove = true;  // Завершаем цикл корректного ввода
+                    board[row, col] = currentPlayer; // Ввод хода
+                    validMove = true;
                 } 
                 else 
                 {
-                    Console.WriteLine("Некорректный ход. Попробуйте снова.");  // Выводим сообщение об ошибке
+                    Console.WriteLine("Некорректный ход. Попробуйте снова.");
                 }
             }
 
-            // Логика смены игрока (ветка Rules)
-            currentPlayer = currentPlayer == 'X' ? 'O' : 'X';  // Меняем игрока после успешного хода
-        }
+            // Проверка победителя
+            if (CheckWin()) 
+            {
+                PrintBoard();
+                Console.WriteLine($"Игрок {currentPlayer} победил!");
+                gameOver = true;
+            }
+            // Проверка ничьей
+            else if (CheckDraw()) 
+            {
+                PrintBoard();
+                Console.WriteLine("Ничья!");
+                gameOver = true;
+            }
 
-        // Пока игра не завершена, основная логика будет продолжаться.
-        // Логика победы, ничьей и перезапуска еще не добавлена.
+            // Смена игрока
+            if (!gameOver) 
+            {
+                currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
+            }
+        }
     }
 }
